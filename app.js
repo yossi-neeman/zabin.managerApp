@@ -40,9 +40,9 @@ app.post("/message", (req,res)=> {
 
   twilioClient.messages 
         .create({ 
-           body: 'Response on the incoming message', 
+           body: 'message was:' + req.body.Body, 
            from: 'whatsapp:+14155238886',       
-           to: 'whatsapp:+972547244047' 
+           to: req.body.From
          }) 
   .then((message) => console.log(message.sid))
   .catch(err => console.log(err))
