@@ -34,9 +34,9 @@ var accountSid = 'AC531e5519183aa0bc2571f62e17495da8'; // Your Account SID from 
 
 app.post("/message", (req,res)=> {
 
-  console.log("req.body: " + req.body);
-
-  console.log("req: " + req);
+  console.log("req.url: " + JSON.stringify(req.url));
+  console.log("req.headers: " + JSON.stringify(req.headers));
+  console.log("req.body: " + JSON.stringify(req.body));
 
   twilioClient.messages 
         .create({ 
