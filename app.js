@@ -34,14 +34,10 @@ var accountSid = 'AC531e5519183aa0bc2571f62e17495da8'; // Your Account SID from 
 
 app.post("/message", (req,res)=> {
 
-  
-  
-  /*SMS
-  client.messages.create({
-      body: 'Hello from Node',
-      to: '+972547244047',  // Text this number
-      from: '+12568576036' // From a valid Twilio number
-  })*/
+  console.log("req.body: " + req.body);
+
+  console.log("req: " + req);
+
   twilioClient.messages 
         .create({ 
            body: 'Response on the incoming message', 
@@ -53,8 +49,17 @@ app.post("/message", (req,res)=> {
   .done();
   
   
-    res.send("Got the Order:" + JSON.stringify(req.body));
+    res.send("message:" + JSON.stringify(req.body));
   })
+
+  app.post("/deliverystatus", (req,res)=> {
+
+    console.log("req.body: " + req.body);
+  
+    console.log("req: " + req);
+  
+         res.send("deliverystatus:" + JSON.stringify(req.body));
+    })
 
 app.post("/order", (req,res)=> {
 
