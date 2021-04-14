@@ -40,7 +40,7 @@ app.post("/message", (req,res)=> {
 
   twilioClient.messages 
         .create({ 
-           body: 'message was:' + req.body.Body, 
+           body: 'message was: ' + '*'+req.body.Body+'*', 
            from: 'whatsapp:+14155238886',       
            to: req.body.From
          }) 
