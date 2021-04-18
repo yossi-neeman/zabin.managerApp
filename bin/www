@@ -7,15 +7,17 @@
 var app = require('../app');
 var debug = require('debug')('zabin.managerapp:server');
 var http = require('http');
+var wsserver = require('../ws/wsServer');
 
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+//app.set('port', port);
 app.get("/settings", (req,res)=> {
-  res.send("Version 1.0");
+  console.log("in settings");
+  res.send("Version 2.0");
 })
 
 /**
@@ -23,34 +25,9 @@ app.get("/settings", (req,res)=> {
  */
 //const session = require('express-session');
 var server = http.createServer(app);
+var wsConn = wsserver(server);
 
 
-var WebSocket = require('ws');
-const wss = new WebSocket.Server({ server });
-wss.on('connection', (wsConn) => {
-
-  //connection is up, let's add a simple simple event
-  wsConn.on('message', (message) => {
-
-      //log the received message and send it back to the client
-      console.log('received: %s', message);
-      var order = {
-        id:123,
-        items:[
-          "Milk",
-          "Bread",
-          "Water"
-        ]
-      };
-
-      order.id = message;
-
-      wsConn.send(JSON.stringify(order));
-  });
-
-  //send immediatly a feedback to the incoming connection    
-  wsConn.send('Hi there, I am a WebSocket server');
-});
 
 
 /*
