@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+require('dotenv').config();
 /* handle a posted message */
 var accountSid = process.env.ACCOUNT_SID;//'AC531e5519183aa0bc2571f62e17495da8'; // Your Account SID from www.twilio.com/console
 var authToken = process.env.AUTH_TOKEN;//'962e729a6a42a973891ae9833196222c';   // Your Auth Token from www.twilio.com/console
