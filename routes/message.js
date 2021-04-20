@@ -17,7 +17,8 @@ router.post('/', function(req, res, next) {
       .create({
         body: 'message was: ' + '*' + req.body.Body + '*',
         from: 'whatsapp:+14155238886',
-        to: req.body.From
+        to: req.body.From,
+        MediaUrl0="https://zabin-manager.s3.us-east-2.amazonaws.com/images/milk3precentTara.jpg"
       })
       .then((message) => console.log(message.sid))
       .catch(err => console.log(err))
