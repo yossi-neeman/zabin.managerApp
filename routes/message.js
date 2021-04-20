@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
         to: req.body.From,
         MediaUrl:['https://zabin-manager.s3.us-east-2.amazonaws.com/images/milk3precentTara.jpg']
       })
-      .then((message) => console.log("response is: " + message.sid))
+      .then((message) => console.log("response: " + JSON.stringify(message) + "uri" + message.uri))
       .catch(err => console.log(err))
       .done();
   
